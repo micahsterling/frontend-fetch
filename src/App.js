@@ -1,26 +1,41 @@
-import logo from './logo.svg';
-import React from "react";
+// import logo from './logo.svg';
+import React, { useState } from "react";
 import "./App.css";
 
 function App() {
+  const [formData, setFormData] = useState({});
 
+  const handleSubmit = () => { };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div className="container">
 
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="wrapper">
+        <form className="form" onSubmit={handleSubmit}>
+          <span className="form-title">Registration Form</span>
+          <div className="wrap-input validate-input">
+            <input className="form-input" type="text" placeholder="Full Name" />
+          </div>
+          <div className="wrap-input validate-input">
+            <input className="form-input" type="email" placeholder="Email" />
+          </div>
+          <div className="wrap-input validate-input">
+            <input className="form-input" type="password" placeholder="Password" />
+          </div>
+          <div className="wrap-input validate-input">
+            <input className="form-input" type="text" placeholder="Occupation" />
+          </div>
+          <div className="wrap-input validate-input">
+            <input className="form-input" type="text" placeholder="State" />
+          </div>
+          <div className="container-form-btn">
+            <button className="form-btn">
+              <span>
+                Send
+              </span>
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
