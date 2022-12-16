@@ -34,9 +34,10 @@ function App() {
   return (
     <div className="container">
       <div className="wrapper">
-        <form onSubmit={handleSubmit}>
+        <form className="validate-form" onSubmit={handleSubmit}>
           <span className="form-title">Registration Form</span>
-          <div className="input-wrap validate-input">
+
+          <div className="input-wrap">
             <input
               className="form-input"
               type="text"
@@ -44,9 +45,10 @@ function App() {
               value={formData.fullName}
               placeholder="Full Name"
               onChange={handleFormChange}
+              required
             />
           </div>
-          <div className="input-wrap validate-input">
+          <div className="input-wrap">
             <input
               className="form-input"
               type="email"
@@ -54,9 +56,10 @@ function App() {
               value={formData.email}
               placeholder="Email"
               onChange={handleFormChange}
+              required
             />
           </div>
-          <div className="input-wrap form- validate-input">
+          <div className="input-wrap">
             <input
               className="form-input"
               type="password"
@@ -64,10 +67,11 @@ function App() {
               value={formData.password}
               placeholder="Password"
               onChange={handleFormChange}
+              required
             />
           </div>
           <select
-            className="input-wrap validate-input"
+            className="input-wrap"
             name="occupation"
             onChange={handleFormChange}
             required
@@ -77,19 +81,23 @@ function App() {
             </option>
             {loaded &&
               occupations.map((item) => {
-                return <option>{item}</option>;
+                return <option key={item}> {item}</option>;
               })}
           </select>
-          <div className="input-wrap validate-input">
-            <input
-              className="form-input"
-              type="text"
-              name="state"
-              value={formData.state}
-              placeholder="State"
-              onChange={handleFormChange}
-            />
-          </div>
+          <select
+            className="input-wrap"
+            name="state"
+            onChange={handleFormChange}
+            required
+          >
+            <option value="" disabled hidden selected>
+              Select the state you live in
+            </option>
+            {loaded &&
+              state.map((item) => {
+                return <option key={item.name}>{item.name}</option>;
+              })}
+          </select>
           <div className="container-form-btn">
             <button className="form-btn">
               <span>Send</span>

@@ -48,6 +48,7 @@ form {
   font-size: 18px;
   color: #000000;
   height: 62px;
+  outline-style: none;
 }
 input {
   height: 62px;
@@ -134,4 +135,34 @@ button {
 
 button:hover {
   cursor: pointer;
+}
+
+/*------------------------------------------------------------------
+[ Focus Input ]*/
+
+.focus-input {
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  border-radius: 31px;
+  background-color: #fff;
+  pointer-events: none;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.form-input:focus + .focus-input {
+  width: calc(100% + 20px);
 }
