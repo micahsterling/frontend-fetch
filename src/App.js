@@ -1,16 +1,39 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
 import axios from "./axios";
+import validator from 'validator';
+import "./App.css";
 
 function App() {
   const [formData, setFormData] = useState({});
   const [data, setData] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [emailInValid, setEmailInValid] = useState(true);
+  const [emailError, setEmailError] = useState('')
+  const [email, setEmail] = useState("");
+
+
+
+  useEffect(() => {
+    const validateEmail = (e) => {
+      if (email) {
+        if (validator.isEmail(email)) {
+          setEmailError('')
+          setEmailInValid(false)
+        } else {
+          setEmailError('Enter valid Email!')
+          setEmailInValid(true)
+        }
+      }
+    }
+    validateEmail(email);
+  },)
 
   const handleFormChange = (e) => {
     e.preventDefault();
-
+    if (e.target.name === "email") {
+      setEmail(e.target.value)
+    }
     setFormData(
       Object.assign({}, formData, { [e.target.name]: e.target.value })
     );
@@ -88,6 +111,8 @@ function App() {
                 onChange={handleFormChange}
                 required
               />
+              <span className="focus-input"></span>
+              <span className="alert-validate">{emailError}</span>
             </div>
             <div className="input-wrap">
               <input
@@ -99,6 +124,7 @@ function App() {
                 onChange={handleFormChange}
                 required
               />
+              <span className="focus-input"></span>
             </div>
             <select
               className="input-wrap"
@@ -129,7 +155,7 @@ function App() {
                 })}
             </select>
             <div className="container-form-btn">
-              <button className="form-btn">
+              <button className="form-btn" disabled={emailInValid}>
                 <span>Send</span>
               </button>
             </div>
