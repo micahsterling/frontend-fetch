@@ -1,11 +1,16 @@
-import React, { useState, useEffect, useContext } from "react";
-import axios from "../axios";
-import validator from 'validator';
-import Context from "../context/ContextProvider";
+import React, { useState, useEffect, useContext } from "react"
+import axios from "../axios"
+import validator from 'validator'
+import Context from "../context/ContextProvider"
 import "../App.css";
 
+
 function Form() {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
   const [data, setData] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [emailInValid, setEmailInValid] = useState(true);
@@ -14,10 +19,8 @@ function Form() {
 
   const { setSubmitted } = useContext(Context);
 
-
-
   useEffect(() => {
-    const validateEmail = (e) => {
+    const validateEmail = () => {
       if (email) {
         if (validator.isEmail(email)) {
           setEmailError('')
