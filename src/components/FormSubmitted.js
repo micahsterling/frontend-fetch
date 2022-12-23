@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import "../App.css";
-import Context from "../context/ContextProvider";
+import React, { useContext } from "react"
+import Context from "../context/ContextProvider"
+import "../App.css"
 
 
 function FormSubmitted() {
