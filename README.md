@@ -8,7 +8,7 @@
 git clone https://github.com/micahsterling/frontend-fetch.git
 ```
 
-2. Go into directory fetchPoints-app
+2. Go into directory frontend-fetch
 3. Run the command `npm install`
 4. Run the command `npm start`
 5. You should see in terminal: Compiled successfully!

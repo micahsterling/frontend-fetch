@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useContext } from "react"
-import axios from "../axios"
-import validator from 'validator'
-import Context from "../context/ContextProvider"
+import React, { useState, useEffect, useContext } from "react";
+import axios from "../axios";
+import validator from "validator";
+import Context from "../context/ContextProvider";
 import "../App.css";
-
 
 function Form() {
   const [formData, setFormData] = useState({
@@ -14,7 +13,7 @@ function Form() {
   const [data, setData] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [emailInValid, setEmailInValid] = useState(true);
-  const [emailError, setEmailError] = useState('')
+  const [emailError, setEmailError] = useState("");
   const [email, setEmail] = useState("");
 
   const { setSubmitted } = useContext(Context);
@@ -23,21 +22,21 @@ function Form() {
     const validateEmail = () => {
       if (email) {
         if (validator.isEmail(email)) {
-          setEmailError('')
-          setEmailInValid(false)
+          setEmailError("");
+          setEmailInValid(false);
         } else {
-          setEmailError('Enter valid Email!')
-          setEmailInValid(true)
+          setEmailError("Enter valid Email!");
+          setEmailInValid(true);
         }
       }
-    }
+    };
     validateEmail(email);
-  },)
+  });
 
   const handleFormChange = (e) => {
     e.preventDefault();
     if (e.target.name === "email") {
-      setEmail(e.target.value)
+      setEmail(e.target.value);
     }
     setFormData(
       Object.assign({}, formData, { [e.target.name]: e.target.value })
@@ -67,8 +66,6 @@ function Form() {
       .catch((resp) => console.log("catch", resp));
     setFormData("");
   };
-
-
 
   return (
     <div className="container">

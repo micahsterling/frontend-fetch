@@ -6,15 +6,10 @@ import Form from "./components/Form";
 function App() {
   const { submitted } = useContext(Context);
 
-
   if (submitted) {
-    return (
-      <FormSubmitted />
-    );
+    return <FormSubmitted />;
   } else {
-    return (
-      <Form />
-    );
+    return <Form />;
   }
 }
 
