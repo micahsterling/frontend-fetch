@@ -1,20 +1,20 @@
-import React, { createContext, useState } from "react";
+// import React, { createContext, useState } from "react";
 
-const Context = createContext({});
+// const Context = createContext({});
 
-export const ContextProvider = ({ children }) => {
-  const [submitted, setSubmitted] = useState(false);
+// export const ContextProvider = ({ children }) => {
+//   const [submitted, setSubmitted] = useState(false);
 
-  return (
-    <Context.Provider
-      value={{
-        submitted,
-        setSubmitted,
-      }}
-    >
-      {children}
-    </Context.Provider>
-  );
-};
+//   return (
+//     <Context.Provider
+//       value={{
+//         submitted,
+//         setSubmitted,
+//       }}
+//     >
+//       {children}
+//     </Context.Provider>
+//   );
+// };
 
-export default Context;
+// export default Context;

@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "../axios";
 import validator from "validator";
-import Context from "../context/ContextProvider";
+// import Context from "../context/ContextProvider";
 import "../App.css";
 
-function Form() {
+function Form({ setSubmitted }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,14 +14,13 @@ function Form() {
   const [loaded, setLoaded] = useState(false);
   const [emailInValid, setEmailInValid] = useState(true);
   const [emailError, setEmailError] = useState("");
-  const [email, setEmail] = useState("");
 
-  const { setSubmitted } = useContext(Context);
+  // const { setSubmitted } = useContext(Context);
 
   useEffect(() => {
     const validateEmail = () => {
-      if (email) {
-        if (validator.isEmail(email)) {
+      if (formData.email) {
+        if (validator.isEmail(formData.email)) {
           setEmailError("");
           setEmailInValid(false);
         } else {
@@ -30,14 +29,11 @@ function Form() {
         }
       }
     };
-    validateEmail(email);
+    validateEmail(formData.email);
   });
 
   const handleFormChange = (e) => {
     e.preventDefault();
-    if (e.target.name === "email") {
-      setEmail(e.target.value);
-    }
     setFormData(
       Object.assign({}, formData, { [e.target.name]: e.target.value })
     );
@@ -62,6 +58,7 @@ function Form() {
       .post("/form", formData)
       .then((resp) => {
         setSubmitted(true);
+        console.log("submitted")
       })
       .catch((resp) => console.log("catch", resp));
     setFormData("");
@@ -80,6 +77,7 @@ function Form() {
               name="name"
               value={formData.fullName}
               placeholder="Name"
+              aria-label="Name"
               onChange={handleFormChange}
               required
             />
@@ -92,6 +90,7 @@ function Form() {
               name="email"
               value={formData.email}
               placeholder="Email"
+              aria-label="Email"
               onChange={handleFormChange}
               required
             />
@@ -105,6 +104,7 @@ function Form() {
               name="password"
               value={formData.password}
               placeholder="Password"
+              aria-label="Password"
               onChange={handleFormChange}
               required
             />
@@ -114,6 +114,7 @@ function Form() {
             className="input-wrap"
             name="occupation"
             onChange={handleFormChange}
+            aria-label="Select an Occupation"
             required
           >
             <option value="" disabled hidden selected>
@@ -128,6 +129,7 @@ function Form() {
             className="input-wrap"
             name="state"
             onChange={handleFormChange}
+            aria-label="Select the state you live in"
             required
           >
             <option value="" disabled hidden selected>

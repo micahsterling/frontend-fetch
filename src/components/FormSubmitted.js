@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import Context from "../context/ContextProvider";
+// import Context from "../context/ContextProvider";
 import "../App.css";
 
-function FormSubmitted() {
-  const { setSubmitted } = useContext(Context);
+function FormSubmitted({ setSubmitted }) {
+  // const { setSubmitted } = useContext(Context);
 
   return (
     <div className="container success">
