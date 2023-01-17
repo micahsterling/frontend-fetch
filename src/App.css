@@ -58,7 +58,6 @@ input {
 
 select {
   appearance: none;
-  outline: 0;
   background: white;
   background-image: none;
   height: 62px;
@@ -73,9 +72,6 @@ select:required:invalid {
 }
 option[value=""][disabled] {
   display: none;
-}
-option {
-  color: #000;
 }
 
 .container-form-btn {
@@ -129,7 +125,7 @@ option {
 
 button {
   outline: none !important;
-  border: none;
+  /* border: none; */
   background: transparent;
 }
 
